@@ -54,18 +54,3 @@ export const usePayments = () => {
     addServicePayment: store.addServicePayment
   };
 };
-
-// Ubicación: src/hooks/useHolderData.js
-import { useMemo } from 'react';
-import useStore from '../store';
-
-export const useHolderData = (holderId) => {
-  const store = useStore();
-  
-  const holderData = useMemo(() => {
-    const totals = store.getTotalsByHolder();
-    return totals[holderId.toUpperCase()] || null;
-  }, [holderId, store.loans, store.services]);
-
-  return holderData;
-};
